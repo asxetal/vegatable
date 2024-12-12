@@ -17,6 +17,17 @@ body{
   font-weight: 400;
 }
 
+body::-webkit-scrollbar{
+  width: 9px;
+  border-radius: 20px;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: #c9c9c9;
+  border-radius: 50px;
+}
+body::-webkit-scrollbar-thumb:hover{
+  background-color: #b9b9b9;
+}
 nav{
   display: flex;
   float: right;
@@ -55,10 +66,10 @@ nav{
   position: absolute;
   bottom: 0;
   left: 0;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--color-text);
   border-radius: 12px;
   width: 0;
-  transition: width .3s ease-in-out;
+  transition: width .5s ease-in;
 }
 
 .nav__item--link:hover::before{
@@ -121,7 +132,7 @@ nav{
 
 .button__hide:hover {
   transform: scale(1.1);
-  color: #fff;
+  color: var(--color-text);
   box-shadow: 0 0 10px 3px rgba(109, 150, 231, 0.6);
 }
 
@@ -165,10 +176,14 @@ nav{
 }
 
 .item__shop{
-  border: 1px solid #fff;
+  border: 1px solid var(--border-color);
   list-style: none;
   height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
 }
+
 .item__shop > img{
   width: 250px;
   height: 150px;
@@ -176,36 +191,41 @@ nav{
   background-size: cover;
   background-position: center;
 }
+
 .item__shop > h3,
 .item__shop > label{
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .item__shop > label > input{
   width: 100px;
   height: 50px;
   padding: 10px 5px;
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 1px solid var(--border-color);
   outline: none;
   border-radius: 15px;
 }
+
 .button__shop--buy{
   margin: 10px auto;
   display: block;
   padding: 10px 30px;
-  border: 1px solid #fff;
+  border: 1px solid var(--border-color);
   background-color: transparent;
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in, color .4s linear;
 }
+
 .button__shop--buy:hover{
   transform: scale(1.1);
-  color: #fff;
+  color: var(--color-text);
   box-shadow: 0 0 10px 3px rgba(0,255,135,.6);
 }
+
 .button__shop--buy::before{
   content: "";
   position: absolute;
@@ -218,7 +238,128 @@ nav{
   z-index: -1;
   transition: width 0.3s ease-in-out;
 }
+
 .button__shop--buy:hover::before{
   width: 100%;
-  color: #fff;
+  color: var(--color-text);
 }
+
+.intro__peoples{
+  height: 150vh;
+  background-color: #f1f1f1;
+}
+
+.intro__peoples > span{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 34px;
+  font-family: "Satisfy";
+  font-weight: 400;
+  padding: 30px;
+}
+
+.intro__peoples > ul{
+  display: flex;
+  gap: 100px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.people {
+  color: var(--color-text);
+  position: relative;
+  list-style: none;
+}
+
+.image{
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+}
+
+.image > img{
+  height: 300px;
+  border-radius: 50px;
+  border: 3px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  z-index: 0;
+}
+
+.image::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(1,1,1,.3);
+  width: 0;
+  height: 0;
+  border-radius: 50px;
+  transition: all .4s ease;
+}
+
+.image:hover::before{
+  width: 100%;
+  height: 100%;
+}
+
+.text > span{
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  font-size: 20px;
+  margin-top: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.text > p{
+  width: 280px;
+  position: absolute;
+  z-index: 10000;
+  top: 60px;
+  left: 0;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.image:hover ~ .text > span,
+.image:hover ~ .text > p {
+  opacity: 1;
+}
+
+.footer{
+  height: 100vh;
+  background-color: #3e3e3e;
+  color: rgb(243, 63, 93);
+}
+
+footer > ul{
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.foot__end{
+  padding: 10px 20px;
+}
+
+.sub__end{
+  position: absolute;
+  left: 60%;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+}
+
+.environment:hover .sub__end{
+  opacity: 1;
+  visibility: visible;
+} 
